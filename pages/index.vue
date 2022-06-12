@@ -3,8 +3,8 @@
     <div class="container">
       <h1>Добавление товара</h1>
       <select class="container__select">
-        <option>От меньшего к большему</option>
-        <option>От большего к меньшему</option>
+        <option>По возрастанию</option>
+        <option>По уменьшению</option>
         <option>По наименованию</option>
       </select>
     </div>
@@ -32,8 +32,6 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  display: flex;
-  justify-content: center;
 }
 
 h1 {
@@ -48,8 +46,10 @@ h1 {
 
 .main {
   margin: 32px;
-  width: 1440px;
-  background-color: $mainBG;
+  background: $mainBG fixed  no-repeat;
+  background-size: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .container {
@@ -58,7 +58,7 @@ h1 {
   justify-content: space-between;
   &__select {
     appearance: none;
-    padding: 16px;
+    padding: 10px 25px 10px 16px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     color: $select;
     font-size: 12px;
@@ -66,7 +66,7 @@ h1 {
     border-radius: 4px;
     border-color: white;
     background: url("assets/img/selectArrow.png") no-repeat right;
-    background-position-x: calc(100% - 6px);
+    background-position-x: calc(100% - 10%);
     background-color: white;
     text-align: center;
   }
