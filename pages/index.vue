@@ -46,8 +46,6 @@ h1 {
 
 .main {
   margin: 32px;
-  background: $mainBG fixed  no-repeat;
-  background-size: 100%;
   max-width: 1440px;
   margin: 0 auto;
 }
