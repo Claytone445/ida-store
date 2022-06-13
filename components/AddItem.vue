@@ -30,13 +30,15 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~assets/scss/variables";
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-@import "~assets/scss/variables";
+
 .form {
   display: flex;
   flex-direction: column;
