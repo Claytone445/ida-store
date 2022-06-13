@@ -39,6 +39,8 @@ export default {
 
 @import "~assets/scss/variables";
 .form {
+  display: flex;
+  flex-direction: column;
   max-width: 332px;
   background-color: $formBG;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
@@ -65,7 +67,7 @@ export default {
   &__input {
     padding-left: 16px;
     height: 36px;
-    max-width: 284px;
+    max-width: 278px;
     width: 100%;
     outline: none;
     transition: all 0.5s ease 0s;
@@ -82,7 +84,7 @@ export default {
 
   &__description {
     padding: 10px 0 0 16px;
-    max-width: 284px;
+    max-width: 278px;
     width: 100%;
     resize: none;
     min-height: 100px;
@@ -99,6 +101,18 @@ export default {
    box-shadow: 0 0 15px #fff;
  }
 
+ &__btn {
+   min-height: 36px;
+   width: 100%;
+   outline: none;
+   border: white;
+   border-radius: 10px;
+   background-color: $btnBG;
+   font-weight: 600;
+   font-size: 12px;
+   line-height: 15px;
+   color: $btnFont;
+ }
 }
 </style>
 
