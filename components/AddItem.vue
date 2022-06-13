@@ -47,7 +47,9 @@ export default {
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
   padding: 24px 24px 24px 24px;
   border-radius: 4px;
-
+  @media  screen and (max-width: 375px) {
+    padding: 24px 12px 24px 12px;
+  }
   &__item {
     margin-bottom: 24px;
   }

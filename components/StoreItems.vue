@@ -1,6 +1,5 @@
 <template>
 <div class="items">
-
   <div class="items__wrapper">
     <div class="items__img"><img src="~assets/img/camera.png" alt="" class="items__picture">
       <img src="~assets/img/basket.png" alt="" class="items__basket">
@@ -30,6 +29,38 @@
       <p class="items__price">10 000 руб.</p>
     </div>
   </div>
+  <div class="items__wrapper">
+    <div class="items__img"><img src="~assets/img/camera.png" alt="" class="items__picture">
+      <img src="~assets/img/basket.png" alt="" class="items__basket"></div>
+    <div class="items__description">
+      <h2 class="items__title">Наименование Товара</h2>
+      <p class="items__info">Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк</p>
+      <p class="items__price">10 000 руб.</p>
+    </div>
+  </div>
+  <div class="items__wrapper">
+    <div class="items__img"><img src="~assets/img/camera.png" alt="" class="items__picture">
+      <img src="~assets/img/basket.png" alt="" class="items__basket"></div>
+    <div class="items__description">
+      <h2 class="items__title">Наименование Товара</h2>
+      <p class="items__info">Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк</p>
+      <p class="items__price">10 000 руб.</p>
+    </div>
+  </div>
+  <div class="items__wrapper">
+    <div class="items__img"><img src="~assets/img/camera.png" alt="" class="items__picture">
+      <img src="~assets/img/basket.png" alt="" class="items__basket"></div>
+    <div class="items__description">
+      <h2 class="items__title">Наименование Товара</h2>
+      <p class="items__info">Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк</p>
+      <p class="items__price">10 000 руб.</p>
+    </div>
+  </div>
+
+
+
+
+
 
 </div>
 </template>
@@ -54,13 +85,23 @@ export default {
   max-width: 1044px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  @media  screen and (max-width: 720px) {
+    flex-direction: column;
+    max-width: 332px;
+    margin-top: 24px;
+  }
 
   &__wrapper {
+    min-width: 332px;
     position: relative;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    margin-left: 16px;
+    margin: 0 0 16px 16px;
+    @media  screen and (max-width: 720px) {
+    margin: 0;
+    }
   }
 
   &__picture {

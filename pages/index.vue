@@ -13,10 +13,6 @@
       <store-items/>
     </div>
   </div>
-
-
-
-
 </template>
 
 <script>
@@ -57,6 +53,9 @@ h1 {
   padding: 32px 32px 16px 32px;
   display: flex;
   justify-content: space-between;
+  @media  screen and (max-width: 720px) {
+    flex-direction: column;
+  }
   &__select {
     appearance: none;
     padding: 10px 25px 10px 16px;
@@ -70,6 +69,10 @@ h1 {
     background-position-x: calc(100% - 10%);
     background-color: white;
     text-align: center;
+    @media  screen and (max-width: 720px) {
+      margin: 10px 0;
+      max-width: 332px;
+    }
   }
 
 
@@ -77,6 +80,10 @@ h1 {
     margin: 32px;
     display: flex;
     justify-content: space-between;
+    @media  screen and (max-width: 720px) {
+      flex-direction: column;
+      margin: 8px 32px;
+    }
   }
 }
 </style>
