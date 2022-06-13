@@ -44,7 +44,7 @@ export default {
   flex-direction: column;
   max-width: 332px;
   background-color: $formBG;
-  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
   padding: 24px 24px 24px 24px;
   border-radius: 4px;
   @media  screen and (max-width: 375px) {
@@ -61,7 +61,6 @@ export default {
     font-weight: 400;
     font-size: 10px;
     line-height: 13px;
-    color: $label;
     font-family: 'Source Sans Pro', sans-serif;
     margin-bottom: 4px;
   }
