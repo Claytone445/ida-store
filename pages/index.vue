@@ -32,6 +32,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  background-color: $mainBG;
 }
 
 h1 {
@@ -45,7 +46,7 @@ h1 {
 }
 
 .main {
-  margin: 32px;
+  margin: 0px 32px;
   max-width: 1440px;
   margin: 0 auto;
 }
