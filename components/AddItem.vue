@@ -6,7 +6,7 @@
     <input id ="itemName" placeholder="Введите наименование товара" type="text" class="form__input">
     </div>
     <div class="form__item">
-    <label for="itemDescription" class="form__description-label">Описание товара</label>
+    <label for="itemDescription" class="form__description-label"><span>Описание товара</span></label>
     <textarea id="itemDescription"  placeholder="Введите описание товара" name="description"  class="form__description"></textarea>
     </div>
     <div class="form__item">
@@ -33,9 +33,8 @@ export default {
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
-
-
 
 @import "~assets/scss/variables";
 .form {
@@ -44,11 +43,11 @@ export default {
   max-width: 332px;
   background-color: $formBG;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
-  padding: 24px;
+  padding: 24px 24px 24px 24px;
   border-radius: 4px;
 
   &__item {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
   &__item:last-child {
     margin: 0px;
@@ -59,6 +58,7 @@ export default {
     font-size: 10px;
     line-height: 13px;
     color: $label;
+    font-family: 'Source Sans Pro', sans-serif;
     margin-bottom: 4px;
   }
   &__label span {
@@ -67,10 +67,10 @@ export default {
   &__input {
     padding-left: 16px;
     height: 36px;
-    max-width: 278px;
-    width: 100%;
+    width: 284px;
     outline: none;
     transition: all 0.5s ease 0s;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
@@ -84,11 +84,11 @@ export default {
 
   &__description {
     padding: 10px 0 0 16px;
-    max-width: 278px;
     width: 100%;
     resize: none;
     min-height: 100px;
     outline: none;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
@@ -101,6 +101,12 @@ export default {
    box-shadow: 0 0 15px #fff;
  }
 
+  &__description-label span {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 13px
+  }
+
  &__btn {
    min-height: 36px;
    width: 100%;
@@ -111,8 +117,15 @@ export default {
    font-weight: 600;
    font-size: 12px;
    line-height: 15px;
+   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
    color: $btnFont;
  }
+  &__btn:hover {
+    cursor: pointer;
+    transition: all 0.5s ease 0s;
+    background-color: $btnHoverBG;
+    color: $btnHoverFont;
+  }
 }
 </style>
 
