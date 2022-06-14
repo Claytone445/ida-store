@@ -1,31 +1,97 @@
-<!-- Please remove this file from your project -->
 <template>
-  <div class="form">
+  <form @submit.prevent="checkForm">
+  <div class="form" >
     <div class="form__item">
     <label for="itemName" class="form__label">Наименование товара<span>*</span></label>
-    <input id ="itemName" placeholder="Введите наименование товара" type="text" class="form__input">
+    <input
+      id ="itemName"
+      placeholder="Введите наименование товара"
+      class="form__input"
+      v-model.trim="form.itemName"
+      :class="$v.form.itemName.$error ? 'is-invalid' : ''"
+
+    >
+      <p v-if="$v.form.itemName.$dirty && !$v.form.itemName.required" class="invalid-feedback">
+        Поле является обязательным
+      </p>
     </div>
     <div class="form__item">
     <label for="itemDescription" class="form__description-label"><span>Описание товара</span></label>
-    <textarea id="itemDescription"  placeholder="Введите описание товара" name="description"  class="form__description"></textarea>
+    <textarea
+      id="itemDescription"
+      placeholder="Введите описание товара"
+      name="description"
+      class="form__description"
+      v-model.trim="form.itemDescription"
+      :class="$v.form.itemDescription.$error ? 'is-invalid' : ''"
+    ></textarea>
+      <p v-if="$v.form.itemDescription.$dirty && !$v.form.itemName.required" class="invalid-feedback">
+        Поле является обязательным
+      </p>
     </div>
     <div class="form__item">
       <label for="imageUrl" class="form__label">Ссылка на изображение товара<span>*</span></label>
-      <input id ="imageUrl"  placeholder="Введите ссылку" type="url" class="form__input">
+      <input id ="imageUrl"  placeholder="Введите ссылку"  class="form__input"
+      v-model.trim="form.itemUrl">
     </div>
     <div class="form__item">
       <label for="itemPrice" class="form__label">Цена товара<span>*</span></label>
-      <input id ="itemPrice" placeholder="Введите цену" type="number" class="form__input">
+      <input
+        id ="itemPrice"
+        placeholder="Введите цену"
+        class="form__input"
+        v-model.trim="form.itemPrice"
+        :class="$v.form.itemPrice.$error ? 'is-invalid' : ''"
+        value="priceMask"
+      >
+      <p v-if="$v.form.itemPrice.$dirty && !$v.form.itemPrice.required" class="invalid-feedback">
+        Поле является обязательным
+      </p>
     </div>
     <div class="form__item">
-      <button class="form__btn">Добавить Товар</button>
+      <button type="submit" class="form__btn">Добавить Товар</button>
     </div>
   </div>
+  </form>
 </template>
 
 <script>
+import { required} from 'vuelidate/lib/validators'
+
 export default {
   name: 'AddItem',
+  data () {
+    return {
+      form: {
+        itemName: '',
+        itemDescription: "",
+        itemUrl: "",
+        itemPrice: "",
+      },
+    }
+  },
+  validations: {
+    form: {
+      itemName: {required},
+      itemDescription: {required},
+      itemUrl: {required},
+      itemPrice: {required},
+    }
+  },
+  methods: {
+    checkForm() {
+      this.$v.form.$touch()
+      if (!this.$v.form.$error) {
+        console.log('Валидация прошла успешно')
+      }
+    }
+  },
+  computed: {
+    priceMask() {
+      return this.itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+    }
+  }
+
 }
 </script>
 
@@ -38,6 +104,17 @@ export default {
   box-sizing: border-box;
 }
 
+.is-invalid {
+  color: red;
+}
+
+.invalid-feedback {
+  margin-top: 4px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 8px;
+  color: red;
+}
 
 .form {
   display: flex;
