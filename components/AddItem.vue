@@ -33,6 +33,9 @@
       <label for="imageUrl" class="form__label">Ссылка на изображение товара<span>*</span></label>
       <input id ="imageUrl"  placeholder="Введите ссылку"  class="form__input"
       v-model.trim="form.itemUrl">
+      <p v-if="$v.form.itemUrl.$dirty && !$v.form.itemUrl.required" class="invalid-feedback">
+        Поле является обязательным
+      </p>
     </div>
     <div class="form__item">
       <label for="itemPrice" class="form__label">Цена товара<span>*</span></label>
@@ -40,13 +43,12 @@
         id ="itemPrice"
         placeholder="Введите цену"
         class="form__input"
-        v-model.trim="form.itemPrice"
-        :class="$v.form.itemPrice.$error ? 'is-invalid' : ''"
-        value="priceMask"
+        v-model="modelNumber"
+        :type="priceMask.itemPriceChange ? 'number' : 'text'"
+        @focus="priceMask.itemPriceChange = false"
+        @blur="priceMask.itemPriceChange = false"
       >
-      <p v-if="$v.form.itemPrice.$dirty && !$v.form.itemPrice.required" class="invalid-feedback">
-        Поле является обязательным
-      </p>
+
     </div>
     <div class="form__item">
       <button type="submit" class="form__btn">Добавить Товар</button>
@@ -66,16 +68,19 @@ export default {
         itemName: '',
         itemDescription: "",
         itemUrl: "",
-        itemPrice: "",
       },
+      priceMask: {
+        itemPrice: 0,
+        itemPriceChange: false,
+      }
+
     }
   },
   validations: {
     form: {
       itemName: {required},
       itemDescription: {required},
-      itemUrl: {required},
-      itemPrice: {required},
+      itemUrl: {required}
     }
   },
   methods: {
@@ -87,10 +92,16 @@ export default {
     }
   },
   computed: {
-    priceMask() {
-      return this.itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
-    }
-  }
+    modelNumber: {
+      get() {
+        return this.priceMask.itemPriceChange ? this.priceMask.itemPrice : this.priceMask.itemPrice.toLocaleString()
+      },
+      set(value) {
+        this.priceMask.itemPrice = +value.replace(/\s/g, "")
+        this.$emit('input', this.priceMask.itemPrice)
+      },
+    },
+  },
 
 }
 </script>
