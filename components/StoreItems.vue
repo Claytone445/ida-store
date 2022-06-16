@@ -29,45 +29,27 @@
       <p class="items__price">10 000 руб.</p>
     </div>
   </div>
-  <div class="items__wrapper">
-    <div class="items__img"><img src="~assets/img/camera.png" alt="" class="items__picture">
-      <img src="~assets/img/basket.png" alt="" class="items__basket"></div>
-    <div class="items__description">
-      <h2 class="items__title">Наименование Товара</h2>
-      <p class="items__info">Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк</p>
-      <p class="items__price">10 000 руб.</p>
-    </div>
-  </div>
-  <div class="items__wrapper">
-    <div class="items__img"><img src="~assets/img/camera.png" alt="" class="items__picture">
-      <img src="~assets/img/basket.png" alt="" class="items__basket"></div>
-    <div class="items__description">
-      <h2 class="items__title">Наименование Товара</h2>
-      <p class="items__info">Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк</p>
-      <p class="items__price">10 000 руб.</p>
-    </div>
-  </div>
-  <div class="items__wrapper">
-    <div class="items__img"><img src="~assets/img/camera.png" alt="" class="items__picture">
-      <img src="~assets/img/basket.png" alt="" class="items__basket"></div>
-    <div class="items__description">
-      <h2 class="items__title">Наименование Товара</h2>
-      <p class="items__info">Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк</p>
-      <p class="items__price">10 000 руб.</p>
-    </div>
-  </div>
 
-
-
-
-
+  <one-item
+    v-for="item in items" :key="item"
+    :item="item"
+  />
 
 </div>
 </template>
 
 <script>
 export default {
-  name: "StoreItems"
+  name: "StoreItems",
+  data() {
+    return {
+      items: [
+        {id: 1, itemName: "test", itemDescription: "test", itemUrl: "test", itemPrice: 0},
+        {id: 2, itemName: "test", itemDescription: "test2", itemUrl: "test2", itemPrice: 2},
+        {id: 3, itemName: "test", itemDescription: "test2", itemUrl: "test2", itemPrice: 3},
+      ]
+    }
+  }
 }
 </script>
 

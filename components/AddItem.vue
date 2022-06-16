@@ -65,7 +65,7 @@ export default {
   data () {
     return {
       form: {
-        itemName: '',
+        itemName: "",
         itemDescription: "",
         itemUrl: "",
       },
