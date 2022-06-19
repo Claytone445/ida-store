@@ -1,11 +1,14 @@
 <template>
-<div class="item">
-  <div class="items">
-    <p>{{item.id + item.itemName + item.itemDescription + item.itemUrl + item.itemPrice}}</p>
-
-
+  <div class="items__wrapper">
+      <div class="items__img"><img :src="item.itemUrl" alt="" class="items__picture">
+        <img src="~assets/img/basket.png" alt="" class="items__basket">
+      </div>
+      <div class="items__description">
+        <h2 class="items__title">{{item.itemName}}</h2>
+        <p class="items__info">{{item.itemDescription}}</p>
+        <p class="items__price">{{item.itemPrice}} руб.</p>
+      </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -20,6 +23,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+@import "~assets/scss/variables";
 
 </style>

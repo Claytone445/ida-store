@@ -25,23 +25,12 @@
       <p class="items__price">10 000 руб.</p>
     </div>
   </div>
-  <div class="items__wrapper">
-    <div class="items__img"><img src="~assets/img/camera.png" alt="" class="items__picture">
-      <img src="~assets/img/basket.png" alt="" class="items__basket"></div>
-    <div class="items__description">
-      <h2 class="items__title">Наименование Товара</h2>
-      <p class="items__info">Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк</p>
-      <p class="items__price">10 000 руб.</p>
-    </div>
-  </div>
+    <one-item
+      v-for="item in items" :key="item.id"
+      :item="item"
+    />
  </div>
 </div>
-
-  <one-item
-    v-for="item in items" :key="item.id"
-    :item="item"
-  />
-
 </div>
 </template>
 
@@ -57,8 +46,12 @@ export default {
   data() {
     return {
       items: [
-        {id: 1, itemName: "testName", itemDescription: "testDesc", itemUrl: "testUrl", itemPrice: 0},
-      ]
+        {
+          itemName: "Добавленный товар",
+          itemDescription: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          itemUrl: "https://klike.net/uploads/posts/2021-01/1611131113_2.jpg",
+          itemPrice: 100},
+      ],
     }
   },
   methods: {
@@ -69,7 +62,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 @import "~assets/scss/variables";
 
@@ -105,13 +98,14 @@ export default {
 
   &__wrapper {
     min-width: 332px;
+    min-height: 422px;
     position: relative;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
     margin: 0 0 16px 16px;
     @media  screen and (max-width: 720px) {
-    margin: 0;
+    margin: 0 0 16px 0;
     }
   }
 
@@ -121,7 +115,10 @@ export default {
     width: 100%;
     height: 100%;
     cursor: pointer;
+    max-width: 332px;
+    max-height: 200px;
   }
+
 
   &__basket {
     content: "";

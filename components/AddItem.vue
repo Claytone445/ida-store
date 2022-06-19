@@ -9,7 +9,6 @@
       class="form__input"
       v-model.trim="form.itemName"
       :class="$v.form.itemName.$error ? 'is-invalid' : ''"
-
     >
       <p v-if="$v.form.itemName.$dirty && !$v.form.itemName.required" class="invalid-feedback">
         Поле является обязательным
