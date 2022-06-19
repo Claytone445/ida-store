@@ -44,14 +44,16 @@
         placeholder="Введите цену"
         class="form__input"
         v-model="modelNumber"
-        :type="priceMask.itemPriceChange ? 'number' : 'text'"
-        @focus="priceMask.itemPriceChange = false"
-        @blur="priceMask.itemPriceChange = false"
+        :type="form.itemPriceChange ? 'number' : 'text'"
+        @focus="form.itemPriceChange = false"
+        @blur="form.itemPriceChange = false"
       >
-
     </div>
     <div class="form__item">
-      <button type="submit" class="form__btn">Добавить Товар</button>
+      <button
+        @click="addWare"
+        type="submit"
+        class="form__btn" >Добавить Товар</button>
     </div>
   </div>
   </form>
@@ -68,12 +70,9 @@ export default {
         itemName: "",
         itemDescription: "",
         itemUrl: "",
-      },
-      priceMask: {
         itemPrice: 0,
         itemPriceChange: false,
-      }
-
+      },
     }
   },
   validations: {
@@ -83,26 +82,34 @@ export default {
       itemUrl: {required}
     }
   },
+  computed: {
+    modelNumber: {
+      get() {
+        return this.form.itemPriceChange ? this.form.itemPrice : this.form.itemPrice.toLocaleString()
+      },
+      set(value) {
+        this.form.itemPrice = +value.replace(/\s/g, "")
+        this.$emit('input', this.form.itemPrice)
+      },
+    },
+  },
   methods: {
     checkForm() {
       this.$v.form.$touch()
       if (!this.$v.form.$error) {
         console.log('Валидация прошла успешно')
       }
-    }
-  },
-  computed: {
-    modelNumber: {
-      get() {
-        return this.priceMask.itemPriceChange ? this.priceMask.itemPrice : this.priceMask.itemPrice.toLocaleString()
-      },
-      set(value) {
-        this.priceMask.itemPrice = +value.replace(/\s/g, "")
-        this.$emit('input', this.priceMask.itemPrice)
-      },
+    },
+    addWare() {
+      const ware = {
+        itemName: this.form.itemName,
+        itemDescription: this.form.itemDescription,
+        itemUrl: this.form.itemUrl,
+        itemPrice: this.form.itemPrice,
+      }
+      this.$emit('addWare', ware);
     },
   },
-
 }
 </script>
 

@@ -1,4 +1,9 @@
 <template>
+    <div class="main">
+    <div class="container">
+  <add-item
+    @addWare="addWare"
+  />
 <div class="items">
   <div class="items__wrapper">
     <div class="items__img"><img src="~assets/img/camera.png" alt="" class="items__picture">
@@ -29,9 +34,11 @@
       <p class="items__price">10 000 руб.</p>
     </div>
   </div>
+ </div>
+</div>
 
   <one-item
-    v-for="item in items" :key="item"
+    v-for="item in items" :key="item.id"
     :item="item"
   />
 
@@ -39,16 +46,25 @@
 </template>
 
 <script>
+import addItem from "~/components/AddItem";
+import oneItem from "~/components/OneItem";
+
 export default {
   name: "StoreItems",
+  components: {
+    addItem, oneItem
+  },
   data() {
     return {
       items: [
-        {id: 1, itemName: "test", itemDescription: "test", itemUrl: "test", itemPrice: 0},
-        {id: 2, itemName: "test", itemDescription: "test2", itemUrl: "test2", itemPrice: 2},
-        {id: 3, itemName: "test", itemDescription: "test2", itemUrl: "test2", itemPrice: 3},
+        {id: 1, itemName: "testName", itemDescription: "testDesc", itemUrl: "testUrl", itemPrice: 0},
       ]
     }
+  },
+  methods: {
+  addWare(ware) {
+    this.items.push(ware);
+  }
   }
 }
 </script>
@@ -61,6 +77,19 @@ export default {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+.main {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+  }
 }
 
 .items {

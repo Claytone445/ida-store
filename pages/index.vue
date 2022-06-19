@@ -9,7 +9,6 @@
       </select>
     </div>
     <div class="container__components">
-      <add-item />
       <store-items/>
     </div>
   </div>
@@ -54,7 +53,12 @@ h1 {
   display: flex;
   justify-content: space-between;
   @media  screen and (max-width: 720px) {
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+  }
+  @media  screen and (max-width: 720px) {
+    padding:0;
   }
   &__select {
     appearance: none;
@@ -70,6 +74,7 @@ h1 {
     background-color: white;
     text-align: center;
     @media  screen and (max-width: 720px) {
+      width: 100%;
       margin: 10px 0;
       max-width: 332px;
     }
@@ -77,7 +82,6 @@ h1 {
 
 
   &__components {
-    margin: 32px;
     display: flex;
     justify-content: space-between;
     @media  screen and (max-width: 720px) {
